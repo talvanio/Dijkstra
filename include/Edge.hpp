@@ -2,12 +2,12 @@
 #define VERTICE_HPP
 
 
-class edge {
+class Edge {
     public:
     int vertex;
     float weight;
-    edge* next;
-    edge(int vertex, float weight) {
+    Edge* next;
+    Edge(int vertex, float weight) {
         this->next = nullptr;
         this->vertex = vertex;
         this->weight = weight;
