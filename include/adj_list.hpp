@@ -8,7 +8,7 @@ class adj_list {
     edge* root_edge;
     public:
         adj_list() {
-            edge* root_edge = nullptr;
+            this->root_edge = nullptr;
         }
         void insert(int vertex, float weight) {
             if (this->root_edge == nullptr) {
