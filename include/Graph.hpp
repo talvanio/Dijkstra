@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Adj_list.hpp"
+#include "Vertex.hpp"
+#include "utils.hpp"
 
 class Graph {
 	public:
@@ -42,6 +44,13 @@ class Graph {
 			}
 		}
 
+		void insert_portal(Vertex origin_vertex,Vertex destination_vertex) {
+			insert_edge(origin_vertex.id,destination_vertex.id,0);
+		}
+
+		void insert_edge (Vertex origin_vertex, Vertex destination_vertex) {
+			adjacency_list_vector[origin_vertex.id]->insert(destination_vertex.id,calculate_distance(origin_vertex,destination_vertex));
+		}
 
 		void print_graph() {
     		for (int i = 0; i<this->number_of_vertices;i++) {
@@ -49,6 +58,9 @@ class Graph {
         		this->adjacency_list_vector[i]->print();
     		};
 		}
+
+
+		
 		
 		~Graph() {
 			for(int i=0;i<number_of_vertices;i++) {

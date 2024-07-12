@@ -1,8 +1,7 @@
-#include <stdlib.h>
-#include "Edge.hpp"
-
 #ifndef ADJ_LIST_HPP
 #define ADJ_LIST_HPP
+#include <stdlib.h>
+#include "Edge.hpp"
 
 class Adj_list {
     public:
