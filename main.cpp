@@ -1,7 +1,9 @@
+#include <iostream>
+#include <stdlib.h>
 #include <stdio.h>
 #include "./include/Graph.hpp"
 #include "./include/utils.hpp"
-
+#include "./src/Algorithms.cpp"
 
 int main() {
 
@@ -38,9 +40,10 @@ int main() {
         graph.insert_portal(vertex_array[origin_vertex_id],vertex_array[destination_vertex_id]);
 
     }
+    /**/    
+    Dijkstra(graph);
 
 
-    graph.print_graph();
     return 0;
 
 }   

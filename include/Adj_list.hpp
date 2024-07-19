@@ -26,6 +26,7 @@ class Adj_list {
                 i++;
                 next_edge = current_edge->next;
             }
+            return i;
         }
 
 

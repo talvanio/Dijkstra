@@ -8,10 +8,13 @@ class Heap {
     public:
         int heap_size = 0;
         int heap_capacity = 10;
-        Edge* items;
+        Edge* items = new Edge[heap_capacity];
 
 
         Heap() {};
+        ~Heap() {
+            delete []items;
+        }
         
         void verify_and_increase() {
             if(heap_size == heap_capacity) {
@@ -31,12 +34,10 @@ class Heap {
         float parent(int index) {return items[get_parent_index(index)].weight;};
 
         Edge peek() {
-            if (this->heap_size == 0 ) return;
             return this->items[0];
         }
 
         Edge poll() {
-            if (this->heap_size == 0) return;
             Edge item = this->items[0];
             this->items[0] = this->items[heap_size -1];
             this->heap_size--;
@@ -50,6 +51,11 @@ class Heap {
             heap_size++;
             heapify_up();
         }
+
+        void add(int vertex, float weight) {
+            Edge temp_edge(vertex,weight);
+            this->add(temp_edge);           
+            }
 
         // heapify_up: itera sobre o Heap, de baixo para cima. Enquanto existir um pai para aquele nó, 
         // e enquanto o pai for maior do que o último elemento, sobe o elemento pelo heap.
@@ -65,11 +71,11 @@ class Heap {
 
         void heapify_down() {
             int index = 0;
-            while(has_left_child) {
+            while(has_left_child(index)) {
 
                 //Encontrando o menor filho para garantir a comparação do item com os dois filhos.
                 int smaller_child_index = get_left_child_index(index);
-                if(has_right_child && right_child(index) < left_child(index)) {
+                if(has_right_child(index) && right_child(index) < left_child(index)) {
                     smaller_child_index = get_right_child_index(index);
                 }
 
@@ -96,7 +102,7 @@ class Heap {
 
 
         int get_left_child_index(int parent_index) {
-            return 2* parent_index + 1;
+            return 2* parent_index;
         }
         int get_right_child_index(int parent_index) {
             return 2* parent_index + 1;
@@ -123,7 +129,7 @@ class Heap {
             this->items[item1_index] = temp;
         }
 
-
+    
 
 
 
