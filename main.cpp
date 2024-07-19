@@ -20,7 +20,6 @@ int main() {
         int x_coordinate,y_coordinate;
         std::cin>>x_coordinate>>y_coordinate;
         vertex_array[i] = Vertex(i,x_coordinate,y_coordinate);
-        std::cout<<"Vertice no "<<vertex_array[i].id<<" Coordenada X:"<<vertex_array[i].x_coordinate<<std::endl;  
     }
 
 

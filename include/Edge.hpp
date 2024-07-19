@@ -12,6 +12,9 @@ class Edge {
         this->vertex = vertex;
         this->weight = weight;
     }
+    Edge() {
+        this->next = nullptr;
+    }
 };
 
 #endif

@@ -16,6 +16,18 @@ class Adj_list {
             this->root_edge = new_edge;
         };
 
+        int len() {
+            int i=0;
+            Edge* next_edge = this->root_edge;
+            Edge* current_edge = this->root_edge;
+
+            while(next_edge != nullptr) {
+                current_edge = next_edge;
+                i++;
+                next_edge = current_edge->next;
+            }
+        }
+
 
         ~Adj_list() {
             Edge* actual_edge = this->root_edge;

@@ -59,15 +59,17 @@ class Graph {
     		};
 		}
 
+		Adj_list get_adj(int vertex_index) {
+			return *adjacency_list_vector[vertex_index];
+		}
 
-		
+
 		
 		~Graph() {
 			for(int i=0;i<number_of_vertices;i++) {
 				delete adjacency_list_vector[i];
-
-
 			}
+			
 			delete[] adjacency_list_vector;
 		}
 };
