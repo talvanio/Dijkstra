@@ -1,13 +1,13 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include "./include/Graph.hpp"
-#include "./include/utils.hpp"
-#include "./src/Algorithms.cpp"
+#include "./../include/Graph.hpp"
+#include "./../include/utils.hpp"
+#include "./../include/Algorithms.hpp"
 
 int main() {
 
-    int number_of_vertices,number_of_edges,number_of_portals;
+    int number_of_vertices, number_of_edges,number_of_portals, energy, max_portals;
 
 
     std::cin>>number_of_vertices>>number_of_edges>>number_of_portals;
@@ -42,8 +42,10 @@ int main() {
         graph->insert_portal(vertex_array[origin_vertex_id],vertex_array[destination_vertex_id]);
 
     }
-    /**/    
-    Dijkstra(*graph,number_of_portals);
-
+    std::cin>>energy>>max_portals;
+    can_escape_dijkstra(graph,max_portals,energy);
+    std::cout<<" ";
+    can_escape_a_star(graph,max_portals,energy,vertex_array);
+    std::cout<<std::endl;
 
 }   

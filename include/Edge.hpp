@@ -1,5 +1,5 @@
-#ifndef VERTICE_HPP
-#define VERTICE_HPP
+#ifndef EDGE_HPP
+#define EDGE_HPP
 
 
 class Edge {
@@ -7,14 +7,10 @@ class Edge {
     int vertex;
     float weight;
     Edge* next;
-    Edge(int vertex, float weight) {
-        this->next = nullptr;
-        this->vertex = vertex;
-        this->weight = weight;
-    }
-    Edge() {
-        this->next = nullptr;
-    }
+
+
+    Edge(int vertex, float weight);
+    Edge();
 
 };
 
