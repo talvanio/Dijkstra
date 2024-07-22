@@ -12,7 +12,7 @@ int main() {
 
     std::cin>>number_of_vertices>>number_of_edges>>number_of_portals;
 
-    Graph graph = Graph(number_of_vertices);
+    Graph* graph = new Graph(number_of_vertices);
 
 
 
@@ -29,7 +29,7 @@ int main() {
         int origin_vertex_id,destination_vertex_id;
         std::cin>>origin_vertex_id>>destination_vertex_id;
 
-        graph.insert_edge(vertex_array[origin_vertex_id],vertex_array[destination_vertex_id]);
+        graph->insert_edge(vertex_array[origin_vertex_id],vertex_array[destination_vertex_id]);
     }
 
     for(int i=0;i<number_of_portals;i++) {
@@ -37,13 +37,13 @@ int main() {
         std::cin>>origin_vertex_id>>destination_vertex_id;
 
 
-        graph.insert_portal(vertex_array[origin_vertex_id],vertex_array[destination_vertex_id]);
+
+
+        graph->insert_portal(vertex_array[origin_vertex_id],vertex_array[destination_vertex_id]);
 
     }
     /**/    
-    Dijkstra(graph);
+    Dijkstra(*graph,number_of_portals);
 
-
-    return 0;
 
 }   

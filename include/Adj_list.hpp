@@ -1,11 +1,13 @@
 #ifndef ADJ_LIST_HPP
 #define ADJ_LIST_HPP
+#include <iostream>
 #include <stdlib.h>
 #include "Edge.hpp"
 
 class Adj_list {
     public:
         Edge* root_edge;
+
         Adj_list() {
             this->root_edge = nullptr;
         }
@@ -30,15 +32,7 @@ class Adj_list {
         }
 
 
-        ~Adj_list() {
-            Edge* actual_edge = this->root_edge;
-            while(actual_edge != nullptr) {
-                Edge* next_edge = actual_edge->next;
-                delete(actual_edge);
-                actual_edge = next_edge;
-            }
-            root_edge = nullptr;
-        };
+
 
 
         void print() {
@@ -49,6 +43,7 @@ class Adj_list {
 
             if(this->root_edge == nullptr) {
                 std::cout<<"Lista de adjacência vazia"<<std::endl;
+                return;
             } else {
                 while(next_edge != nullptr) {
                     actual_edge = next_edge;

@@ -13,10 +13,6 @@ class Graph {
 		int number_of_vertices;
 		Adj_list** adjacency_list_vector;
 
-		Graph () {
-			this->number_of_vertices = 0;
-		}
-
 		Graph (int number_of_vertices) {
 
 			
@@ -28,6 +24,13 @@ class Graph {
 			for(int i =0;i<number_of_vertices;i++) {
 				adjacency_list_vector[i] = new Adj_list();
 			}
+		}
+
+		~Graph() {
+			for(int i=0;i<number_of_vertices-1;i++) {
+				delete adjacency_list_vector[i];
+			}
+			delete[] adjacency_list_vector;
 		}
 
 		void insert_edge (int origin_vertex, int destination_vertex, float weight) {
@@ -60,18 +63,14 @@ class Graph {
 		}
 
 		Adj_list get_adj(int vertex_index) {
+			if (vertex_index < 0 || vertex_index >= this->number_of_vertices) return Adj_list();
+
+
 			return *adjacency_list_vector[vertex_index];
 		}
 
 
 		
-		~Graph() {
-			for(int i=0;i<number_of_vertices;i++) {
-				delete adjacency_list_vector[i];
-			}
-			
-			delete[] adjacency_list_vector;
-		}
 };
 
 

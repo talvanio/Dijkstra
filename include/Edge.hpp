@@ -15,6 +15,7 @@ class Edge {
     Edge() {
         this->next = nullptr;
     }
+
 };
 
 #endif
