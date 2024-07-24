@@ -8,7 +8,7 @@
 void can_escape_dijkstra(Graph* graph,int max_portals, int energy) {
 
     Heap min_heap = Heap(graph->number_of_vertices*graph->number_of_vertices);
-    float* distances = new float[graph->number_of_vertices];
+    float* distances = new float[graph->number_of_vertices];        
     int* portals_used = new int[graph->number_of_vertices];
     bool* visited = new bool[graph->number_of_vertices];
 
@@ -35,6 +35,11 @@ void can_escape_dijkstra(Graph* graph,int max_portals, int energy) {
     */
 
     while(!min_heap.is_empty()) {
+        /*
+        std::cout<<"===="<<std::endl;
+        min_heap.print();
+        std::cout<<"===="<<std::endl;
+        */
         // std::cout<< "Tamanho do heap: "<< min_heap.size<<std::endl;
         int current_vertex = min_heap.pop().vertex;
         if(visited[current_vertex] == true) continue;
@@ -57,18 +62,24 @@ void can_escape_dijkstra(Graph* graph,int max_portals, int energy) {
 
             if(new_distance < distances[adjacent_vertex] && new_distance >= 0) {
 
-                distances[adjacent_vertex] = new_distance;
-
                 if(adjacent_vertex_weight==0.0 && portals_used[adjacent_vertex]+1 <= max_portals) {
                     portals_used[adjacent_vertex]++;
-                }
+                    distances[adjacent_vertex] = new_distance;
+                } else if ( adjacent_vertex_weight != 0.0) distances[adjacent_vertex] = new_distance;
+
                 /*
                 std::cout<<"Distancias: ";
-                for(int j=0;j<graph.number_of_vertices;j++) {
+                for(int j=0;j<graph->number_of_vertices;j++) {
+                    std::cout<<distances[j]<<" ";
+                }
+                std::cout<<std::endl;
+                std::cout<<"Portais: ";
+                for(int j=0;j<graph->number_of_vertices;j++) {
                     std::cout<<distances[j]<<" ";
                 }
                 std::cout<<std::endl;
                 */
+
             }
             min_heap.add(adjacent_vertex,new_distance,portals_used[adjacent_vertex]);
 
@@ -169,11 +180,11 @@ void can_escape_a_star(Graph* graph, int max_portals, int energy, Vertex* vertex
 
             if(new_distance < distances[adjacent_vertex] && new_distance >= 0) {
 
-                distances[adjacent_vertex] = new_distance;
-
                 if(adjacent_vertex_weight==0.0 && portals_used[adjacent_vertex]+1 <= max_portals) {
                     portals_used[adjacent_vertex]++;
-                }
+                    distances[adjacent_vertex] = new_distance;
+                } else if ( adjacent_vertex_weight != 0.0) distances[adjacent_vertex] = new_distance;
+
                 /*
                 std::cout<<"Distancias: ";
                 for(int j=0;j<graph.number_of_vertices;j++) {
